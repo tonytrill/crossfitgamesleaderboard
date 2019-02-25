@@ -1,0 +1,55 @@
+---
+title: "Open 19.1 Performance"
+author: "Tony Trill"
+date: "2/25/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(ggplot2)
+library(tidyverse)
+```
+
+
+```{r}
+# Create a variable if someone submitted a score
+scores_2019 <- scores_2019 %>%
+  mutate(submitted = ifelse(!is.na(cf_score),1,0))
+```
+
+```{r}
+# Filter for only people who submitted.
+scores_2019 <- scores_2019 %>% 
+  filter(submitted == 1)
+```
+
+```{r}
+scores_2019 <- scores_2019 %>%
+  left_join(athletes_2019, by="competitorId")
+```
+
+
+```{r}
+ggplot(data = scores_2019, mapping = aes(x=cf_score)) + geom_histogram(color="black") + facet_wrap(~ gender, nrow=2) + ylab("Athlete Count") + xlab("Reps") + ggtitle("CrossFit Open 19.1: Distribution of Scores") + theme(plot.title = element_text(family="serif", hjust = .5, face="bold"))
+```
+
+```{r, include=F}
+#Norman 6182
+#HQ 3266
+#IV 22011
+#Native 14923
+#Tulsa 991
+#Deer Creek 8220
+athletes_2019 %>%
+  filter(affiliateName %in% c("Koda CrossFit", "Koda CrossFit Norman", "Koda CrossFit Iron View", "Koda CrossFit Tulsa", "Koda CrossFit Deer Creek", "Koda CrossFit Native"))
+```
+
+
+
+
+
+
