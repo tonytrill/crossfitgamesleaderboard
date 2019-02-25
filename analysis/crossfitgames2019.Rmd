@@ -1,0 +1,119 @@
+---
+title: "2019 CrossFit Open, The Numbers Behind Participation"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+My name is Tony Silva. I am an above average CrossFitter that really enjoys looking at data and numbers. As the self proclaimed Chief Data Scientist for Koda CrossFit Iron View, I took it upon myself to build some programming scripts to pull all of the data from the CrossFit Games Open web API. If you don't know what that means, I basically built something to save all the data from the Open leader board that you can access from <https://games.crossfit.com>. I have been able to capture, last year's data and this year's data. I built some scripts that pre-process the data into usable formats that can be analyzed. 
+
+
+
+```{r, message=F, warning=F, include=F}
+library(tidyverse)
+library(lemon)
+knit_print.data.frame <- lemon_print
+```
+
+
+```{r, message=F, warning=F, include=F}
+men <- read_csv('/Users/silv6928/Data/athletes_men_2019_2019-02-25.csv')
+women <- read_csv('/Users/silv6928/Data/athletes_women_2019_2019-02-25.csv')
+# women csv had NULL gender so adjusted
+women$gender <- 'F'
+
+# Scores are empty because the Open has started
+# Load both csvs for scores
+scores_men <- read_csv('/Users/silv6928/Data/scores_men_2019_2019-02-25.csv')
+scores_women <- read_csv('/Users/silv6928/Data/scores_women_2019_2019-02-25.csv')
+```
+
+```{r, message=F, warning=F, include=F}
+athletes_2018 <- read_csv("/Users/silv6928/Data/athletes_2018.csv")
+scores_2018 <- read_csv("/Users/silv6928/Data/scores_2018.csv")
+```
+
+
+There has been a lot of change to the CrossFit Games Season this year, beginning with the Open. As many of you might know the Regionals were taken out and now you can make it to the CrossFit Games directly from the Open. You can be number one in your country at the end of the 5 weeks, or you can be in the top 20 of the Open to make it. Because of the change in the Games season, many people believe that sign ups for the Open will be down since last year's. Early reports, from Morning Chalk Up, show that sign ups are down 32% found here: <https://morningchalkup.com/2019/02/22/correction-open-registration-down-only-32-earlier-reports-inaccurate/>.
+
+#### The Data
+The CrossFit Games website has a web API that you are able to ping and request data from it. To do so I used a scripting language called Python to pull the data from the Open. I was able to use R, a data analysis tool, to build some code that counts the number of athletes from each Open season and compares them together. For each year, I have two data tables, one that contains each a athlete, and information about them, and a second data table that contains all the information around their scores. 
+
+This data does not contain the divisons that are not contained in the "world wide" division (i.e. 14/15 year olds). This may not reflect the "entire" Open participation however, it does for the most part refelect what is going on when performing year over year comparisons. Since, I am pulling the same sample from 2018 as I am for 2019, I am confident this is a representative sample and can be used to make directional statements about participation in the Open.
+
+Below is a small example of some of the data processing I performed on the back end to get the data into a usable format for this analysis.
+```{r, message=F, warning=F}
+# union all athletes and score files together and remove redundant dfs.
+athletes_2019 <- union(men, women)
+scores_2019 <- union(scores_men, scores_women)
+rm(men,women, scores_men, scores_women)
+
+athletes_2019$affiliateName[athletes_2019$affiliateId==0] <- 'Unaffiliated'
+```
+
+Below is an example the pre-processed data frames of the 2019 athlete data 
+```{r, render=lemon_print}
+head(athletes_2019[1:4,c(1:4,6)])
+```
+
+I used that data to build out the analysis in this blog on finding the true numbers behind the CrossFit Open participation. 
+
+#### How many people have signed up in 2018 vs. 2019?
+Since I had the data frames built out, now I could take that data and use it in my analysis.
+
+We can find the total number of athletes that signed up in 2018 by using the code below. You can see that this number comes out to nearly 400k.
+```{r}
+num_athletes_18 <- length(unique(athletes_2018$competitorId))
+num_athletes_18
+```
+We can also do the same thing for the 2019 data. And below you can see the number of sign ups in 2019.
+```{r}
+num_athletes_19 <- length(unique(athletes_2019$competitorId))
+num_athletes_19
+```
+Next, we can actually can see the percentage change in total Open participation from 2018 to 2019. 
+```{r}
+(1-round(num_athletes_19/num_athletes_18,4))*100
+```
+43% is significantly different than the 32% being reported by the Morning Chalk Up and other media outlets. I actually think the original number Morning Chalk Up posted of 44% is a more accurate number. Either way, these numbers don't look great for CrossFit HQ and the Open.
+
+While the total number of athletes and the change in total athletes is important, what's really important is to identify the number of new athletes that have signed up this year vs. the number of athletes who signed up both 2018 and 2019. Both are interesting metrics to monitor for the "health" of the Open. To do that, I joined the 2018 data and 2019 data using the "competitorId" field that is housed in the API. By doing this, we can find the IDs that exist in the 2019 data, and not the 2018 data (New Athletes), IDs that exist in 2018 and 2019 (Repeat Athletes), and IDs that exist in 2018 but not 2019 (Athletes Who Didn't Sign Up in 2019). You can see this from the code below:
+
+```{r}
+# Join 2018 and 2019 together by competitorId
+athletes <- athletes_2019 %>%
+  left_join(athletes_2018, by='competitorId')  %>%
+  mutate(IsNew=ifelse(is.na(competitorName.y),1,0)) # mark if an athlete is New
+```
+
+Below is the number of New Athletes that signed up.
+```{r}
+# New Athletes
+sum(athletes$IsNew)
+```
+Below is the number of Repeat Athletes that signed up.
+```{r}
+# Repeat Atheltes
+num_athletes_19 - sum(athletes$IsNew)
+```
+We can then take the repeat athletes and determine, of those what's the percentage of people who signed up last year that also signed up this year?
+```{r, warning=F}
+round((num_athletes_19 - sum(athletes$IsNew))/num_athletes_18,4)*100
+```
+So roughly XX% of the people who signed up last year have signed up this year. I believe this number is scarier than what media outlets are writing about. In my opinion the health of the Open and the sport of CrossFit depends on CrossFit's ability to retain participants. I think a drop in participation in the Open was expected as result of the changes to the CrossFit Games process. But was CrossFit HQ anticipating less than half of the people who competed last year to not sign up this year? With the decrease in participation, CrossFit HQ is not only losing out on revenue from registration fees, but as a sponsor I wouldn't be too happy with the decrease in audience and people that would purchase my product. It will be interesting to see how CrossFit HQ responds the different media reports around the Open participation decreasing.
+
+Thanks for reading and may the Open workouts come out in your favor.
+
+```{r, message=F,warning=F,include=F}
+# Create International Variable
+athletes_2018 <- athletes_2018 %>%
+  mutate(IsInternational = ifelse(regionName %in% c('North Central', 'Mid Atlantic', 'South Central', 'West Coast', 'Central East', 'North East', 'South East','South West'),0,1))
+
+athletes_2019 <- athletes_2019 %>%
+  mutate(IsInternational = ifelse(countryOfOriginCode=="US",0,1))
+athletes_2019$IsInternational[is.na(athletes_2019$IsInternational)] <- 0
+```

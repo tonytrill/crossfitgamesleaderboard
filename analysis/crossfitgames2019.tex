@@ -1,0 +1,337 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={2019 CrossFit Open, The Real Numbers Behind Open Participation},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{2019 CrossFit Open, The Real Numbers Behind Open Participation}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{}
+    \preauthor{}\postauthor{}
+    \date{}
+    \predate{}\postdate{}
+  
+
+\begin{document}
+\maketitle
+
+\subsection{Introduction}\label{introduction}
+
+My name is Tony Silva. I am an above average CrossFitter that really
+enjoys looking at data and numbers. As the self proclaimed Chief Data
+Scientist for Koda CrossFit Iron View, I took it upon myself to build
+some programming scripts to pull all of the data from the CrossFit Games
+Open web API. If you don't know what that means, I basically built
+something to save all the data from the Open leaderboard that you can
+access from \textless{}games.crossfit.com\textgreater{}. I have been
+able to capture, last year's data and this year's data. I built some
+scripts that pre-process the data into usable formats that can be
+analyzed. I used that data to build out the analysis in this blog on
+finding the true numbers behind the CrossFit Open participation.
+
+There has been a lot of change to the CrossFit Games Season this year,
+beginning with the Open. As many of you might know the Regionals were
+taken out and now you can make it to the CrossFit Games directly from
+the Open. You can be number one in your country at the end of the 5
+weeks, or you can be in the top 20 of the Open to make it. Because of
+the change in the Games season, many people believe that sign ups for
+the Open will be down since last year's. Early reports, from Morning
+Chalk Up, show that sign ups are down 32\% found here:
+\url{https://morningchalkup.com/2019/02/22/correction-open-registration-down-only-32-earlier-reports-inaccurate/}.
+While these numbers are close to true, they aren't the actuals when
+pulling directly from the leaderboard.
+
+\paragraph{How many people have signed up in 2018
+vs.~2019?}\label{how-many-people-have-signed-up-in-2018-vs.2019}
+
+I was able to use R, a data analysis tool, to build some code that
+counts the number of athletes from each Open season and coompares them
+together. Using my the code below, you can see that were roughly 399489
+sign ups in 2018.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{num_athletes_}\DecValTok{18}\NormalTok{ <-}\StringTok{ }\KeywordTok{length}\NormalTok{(}\KeywordTok{unique}\NormalTok{(athletes_}\DecValTok{2018}\OperatorTok{$}\NormalTok{competitorId))}
+\NormalTok{num_athletes_}\DecValTok{18}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 399489
+\end{verbatim}
+
+And below you can see the number of sign ups in 2019.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{num_athletes_}\DecValTok{19}\NormalTok{ <-}\StringTok{ }\KeywordTok{length}\NormalTok{(}\KeywordTok{unique}\NormalTok{(athletes_}\DecValTok{2019}\OperatorTok{$}\NormalTok{competitorId))}
+\NormalTok{num_athletes_}\DecValTok{19}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 226500
+\end{verbatim}
+
+We can actually can see the percentage change in Open participation from
+2018 to 2019.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1}\OperatorTok{-}\KeywordTok{round}\NormalTok{(num_athletes_}\DecValTok{19}\OperatorTok{/}\NormalTok{num_athletes_}\DecValTok{18}\NormalTok{,}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.433
+\end{verbatim}
+
+43\% is signficantly different than the 32\% being reported by the
+Morning Chalk Up and other media outlets. I actually think the original
+number they posted of 44\% is a more accruate number. Either way, these
+numbers don't look great for CrossFit HQ and the Open.
+
+While the total number of athletesand the change in total athletes is
+important, what's really important is to identify the number of new
+athletes that have signed up this year vs.~the number of athletes who
+signed up both 2018 and 2019. Both are interesting metrics to monitor
+for the ``health'' of the Open. To do that, I joined the 2018 data and
+2019 data using the ``CompetitorId'' field that is housed in the API. By
+doing this, we can find the IDs that exist in the 2019 data, and not the
+2018 data (New Athletes), IDs that exist in 2018 and 2019 (Repeat
+Athletes), and IDs that exist in 2018 but not 2019 (Athletes Who Didn't
+Sign Up in 2019). You can see this from the code below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Create a athletes dataframe}
+\NormalTok{athletes <-}\StringTok{ }\NormalTok{athletes_}\DecValTok{2019} \OperatorTok{%>%}
+\StringTok{  }\KeywordTok{left_join}\NormalTok{(athletes_}\DecValTok{2018}\NormalTok{, }\DataTypeTok{by=}\StringTok{'competitorId'}\NormalTok{)  }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{mutate}\NormalTok{(}\DataTypeTok{IsNew=}\KeywordTok{ifelse}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(competitorName.y),}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+Below is the number of new Athletes that signed up.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# New Athletes}
+\KeywordTok{sum}\NormalTok{(athletes}\OperatorTok{$}\NormalTok{IsNew)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 103575
+\end{verbatim}
+
+Below is the number of Repeat Athletes that signed up.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Repeat Atheltes}
+\NormalTok{num_athletes_}\DecValTok{19} \OperatorTok{-}\StringTok{ }\KeywordTok{sum}\NormalTok{(athletes}\OperatorTok{$}\NormalTok{IsNew)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 122925
+\end{verbatim}
+
+We can then take the repeat athletes and determine, of those what's the
+percentage of people who signed up last year that also signed up this
+year?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{round}\NormalTok{((num_athletes_}\DecValTok{19} \OperatorTok{-}\StringTok{ }\KeywordTok{sum}\NormalTok{(athletes}\OperatorTok{$}\NormalTok{IsNew))}\OperatorTok{/}\NormalTok{num_athletes_}\DecValTok{18}\NormalTok{,}\DecValTok{4}\NormalTok{)}\OperatorTok{*}\DecValTok{100}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 30.77
+\end{verbatim}
+
+So roughly XX\% of the people who signed up last year have signed up
+this year. I believe this number is much more drastic to what the
+Morning Chalk Up has been writing about. Morning Chalk Up is comparing
+the numbers of total number of participants in both years. When in my
+opinion the health of the Open and the sport of CrossFit depends on
+CrossFit's ability to retain participants. So what does this mean? Can
+we say that the change to the Open caused a statistically significant
+change in signups from existing CrossFitters? Since I am only looking at
+two years of data, it's hard to say. But the numbers are pretty drastic.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{athletes_}\DecValTok{2019} \OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(countryOfOriginName) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarise}\NormalTok{(}\DataTypeTok{athletes =} \KeywordTok{n}\NormalTok{()) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{arrange}\NormalTok{(}\KeywordTok{desc}\NormalTok{(athletes))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 130 x 2
+##    countryOfOriginName athletes
+##    <chr>                  <int>
+##  1 United States         112937
+##  2 United Kingdom         12351
+##  3 Brazil                 12340
+##  4 Canada                 12053
+##  5 Australia              11802
+##  6 France                 11318
+##  7 Germany                 4138
+##  8 Spain                   3555
+##  9 Netherlands             3368
+## 10 Italy                   3147
+## # ... with 120 more rows
+\end{verbatim}
+
+\paragraph{Is CrossFit Actually Increasing International
+Participation?}\label{is-crossfit-actually-increasing-international-participation}
+
+We can see from the numbers that nearly half of all sign ups are new
+people. CrossFit has been trying hard to push International
+participation in the Open in order to get the sport more wide spread. We
+can dive into the data and see how the share of international
+participants has changed year over year. We can see the percent share of
+international athletes from last year below:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{round}\NormalTok{(}\KeywordTok{sum}\NormalTok{(athletes_}\DecValTok{2018}\OperatorTok{$}\NormalTok{IsInternational)}\OperatorTok{/}\NormalTok{num_athletes_}\DecValTok{18}\NormalTok{,}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.4538
+\end{verbatim}
+
+And we can see the percent share of international athletes this year.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{round}\NormalTok{(}\KeywordTok{sum}\NormalTok{(athletes_}\DecValTok{2019}\OperatorTok{$}\NormalTok{IsInternational)}\OperatorTok{/}\NormalTok{num_athletes_}\DecValTok{19}\NormalTok{,}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.5006
+\end{verbatim}
+
+We can see that the share of international athletes partcipation is
+bigger than last year. However, this could be due to a decrease in US
+participation and not necessarily a
+
+
+\end{document}
