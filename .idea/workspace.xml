@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="94b318b9-20fd-43ec-8eb4-e58e4c61be41" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/data_scripts/men_2017data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data_scripts/women_2017data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/analysis/.ipynb_checkpoints/Untitled-checkpoint.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/analysis/.ipynb_checkpoints/crossfitgames2019-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/.ipynb_checkpoints/crossfitgames2019-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/analysis/Untitled.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/analysis/crossfitgames2019.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/crossfitgames2019.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data_scripts/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/analysis/crossfitgames2019.Rmd" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/crossfitgames2019.Rmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analysis/crossfitgames2019.html" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/crossfitgames2019.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,24 +17,24 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data_scripts/women_data.py">
+        <entry file="file://$PROJECT_DIR$/data_scripts/women_2017data.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+            <state relative-caret-position="10">
+              <caret line="35" column="51" lean-forward="true" selection-start-line="35" selection-start-column="51" selection-end-line="35" selection-end-column="51" />
               <folding>
-                <element signature="e#86#101#0" expanded="true" />
+                <element signature="e#62#77#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/data_scripts/men_data.py">
+        <entry file="file://$PROJECT_DIR$/data_scripts/men_2017data.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1428">
-              <caret line="119" column="44" lean-forward="true" selection-start-line="119" selection-start-column="44" selection-end-line="119" selection-end-column="44" />
+            <state relative-caret-position="10">
+              <caret line="36" column="39" lean-forward="true" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
               <folding>
-                <element signature="e#86#101#0" expanded="true" />
+                <element signature="e#62#77#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -57,10 +56,12 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/men_data.py" />
-        <option value="$PROJECT_DIR$/data_scripts/test.py" />
         <option value="$PROJECT_DIR$/data_scripts/men_data.py" />
         <option value="$PROJECT_DIR$/data_scripts/women_data.py" />
         <option value="$PROJECT_DIR$/data_scripts/kids_data.py" />
+        <option value="$PROJECT_DIR$/data_scripts/test.py" />
+        <option value="$PROJECT_DIR$/data_scripts/men_2017data.py" />
+        <option value="$PROJECT_DIR$/data_scripts/women_2017data.py" />
       </list>
     </option>
   </component>
@@ -115,7 +116,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.men_data">
+  <component name="RunManager" selected="Python.women_2017data">
+    <configuration name="men_2017data" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="crossfitgames2019" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/data_scripts" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data_scripts/men_2017data.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="men_data" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="crossfitgames2019" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -158,6 +180,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="women_2017data" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="crossfitgames2019" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/data_scripts" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/data_scripts/women_2017data.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="women_data" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="crossfitgames2019" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -181,9 +224,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.women_2017data" />
+        <item itemvalue="Python.men_2017data" />
+        <item itemvalue="Python.test" />
         <item itemvalue="Python.men_data" />
         <item itemvalue="Python.women_data" />
-        <item itemvalue="Python.test" />
       </list>
     </recent_temporary>
   </component>
@@ -202,13 +247,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="112" y="49" width="1440" height="825" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2746781" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2746781" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3287858" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3287858" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -225,17 +271,6 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/data_scripts/test.py" />
-    <entry file="file://$PROJECT_DIR$/data_scripts/women_data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-          <folding>
-            <element signature="e#86#101#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data_scripts/kids_data.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -248,10 +283,50 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/data_scripts/men_data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1428">
-          <caret line="119" column="44" lean-forward="true" selection-start-line="119" selection-start-column="44" selection-end-line="119" selection-end-column="44" />
+        <state relative-caret-position="415">
+          <caret line="139" lean-forward="true" selection-start-line="1" selection-end-line="139" />
           <folding>
             <element signature="e#86#101#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_scripts/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="58" selection-end-column="29" />
+          <folding>
+            <element signature="e#62#77#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_scripts/women_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="e#86#101#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_scripts/women_2017data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10">
+          <caret line="35" column="51" lean-forward="true" selection-start-line="35" selection-start-column="51" selection-end-line="35" selection-end-column="51" />
+          <folding>
+            <element signature="e#62#77#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_scripts/men_2017data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10">
+          <caret line="36" column="39" lean-forward="true" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
+          <folding>
+            <element signature="e#62#77#0" expanded="true" />
           </folding>
         </state>
       </provider>
