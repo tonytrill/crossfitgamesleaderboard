@@ -12,14 +12,15 @@ class leaderboardDatabase:
     def __init__(self, filePath, databaseName):
         # Create folder to save DB
         if filePath is None:
-            self.directory = '~/' + str(databaseName)
+            self.directory = '~/' + str(databaseName) + '.db'
         else:
-            self.directory = str(filePath) + str(databaseName)
+            self.directory = str(filePath) + str(databaseName) + '.db'
 
     """
     CREATE THE DATABASE AND THE TABLES AND SCHEMA STRUCTURE.
     """
     def createDB(self):
+        print(self.directory)
         conn = sqlite3.connect(self.directory)
         conn.execute('''CREATE TABLE leaderboardScores ()''')
         conn.execute('''CREATE TABLE leaderboardAthletes ()''')
@@ -45,3 +46,5 @@ class leaderboardDatabase:
         countAthletes = conn.fetchone()
         return(countAthletes, countScores)
 
+test = leaderboardDatabase(None, 'test')
+test.createDB()
