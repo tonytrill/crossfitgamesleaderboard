@@ -92,6 +92,7 @@ class gamesURL:
             self.incrementPage()
         #self.saveData(total_athletes, total_scores)
         self.setPage(1) # Reset the page number if object is reused.
+        return(total_athletes, total_scores)
         
 
 test = gamesURL(1,0,0,0,1)
