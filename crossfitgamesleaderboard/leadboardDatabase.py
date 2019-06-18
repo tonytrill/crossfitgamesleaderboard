@@ -50,5 +50,5 @@ class leaderboardDatabase:
         countAthletes = conn.fetchone()
         return(countAthletes, countScores)
 
-test = leaderboardDatabase('/Users/silv6928', 'test')
+test = leaderboardDatabase('/Users/silv6928/', 'test')
 test.createDB()
