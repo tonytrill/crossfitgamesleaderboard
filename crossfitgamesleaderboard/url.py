@@ -97,4 +97,4 @@ class gamesURL:
 
 test = gamesURL(1,0,0,0,1)
 
-print(test.parseJSON()[0])
+print(test.parseJSON()[1])
