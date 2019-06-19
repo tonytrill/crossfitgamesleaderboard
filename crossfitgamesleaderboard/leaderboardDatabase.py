@@ -36,16 +36,17 @@ class leaderboardDatabase:
     """
     def insertRows(self, athletes, scores):
         conn = sqlite3.connect(self.directory)
+
         conn.executemany('''INSERT INTO leaderboardScores(ordinal, rank , score , scoreDisplay ,
         mobileScoreDisplay , scoreIdentifier , scaled , video , breakdown , time , judge ,
         affiliate , heat , lane, competitorId )
-        VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)''', scores)
+        VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);''', scores)
         conn.commit()
-    
+        
         conn.executemany('''INSERT INTO leaderboardAthletes(competitorId , competitorName , firstName , lastName ,
         status , postCompStatus , gender , profilePicS3key , countryOfOriginCode , countryOfOriginName ,
         divisionId , affiliateId , affiliateName , age , height , weight )
-        VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)''', scores)
+        VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)''', athletes)
         conn.close()
     
     """

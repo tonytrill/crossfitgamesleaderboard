@@ -13,10 +13,10 @@ def main(file_path):
     women = url.gamesURL(2,0,0,0,1)
     men_athletes, men_scores = men.parseJSON()
     #women.extractAllData()
-
+    print(men_scores)
     test.insertRows(men_athletes, men_scores)
 
-    print(men_athletes)
+    #print(men_athletes)
 
 if __name__ == "__main__":
     main('/Users/silv6928/')

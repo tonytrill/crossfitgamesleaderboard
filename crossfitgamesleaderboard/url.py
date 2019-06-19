@@ -14,6 +14,13 @@ def getJSON(url):
         json_output = response.json()
         return json_output
 
+def convertDict(listofdicts):
+    list_to_pass = []
+    for singleDict in listofdicts:
+        list_to_pass.append(tuple(singleDict.values()))
+    return(list_to_pass)
+
+
 """
 A CF GAMES API URL CLASS
 
@@ -76,8 +83,12 @@ class gamesURL:
             scores = row['scores']
             for score in scores:
                 # Need the competitorId to tie scores back to athletes
-                score["competitorId"] = athlete["competitorId"]
+                score["competitorId"] = str(athlete["competitorId"])
+                score["ordinal"] = str(score["ordinal"])
                 leaderboard_scores.append(score)
+        del(row, score, athlete)
+        leaderboard_scores = convertDict(leaderboard_scores)
+        athletes = convertDict(athletes)
         return(athletes, leaderboard_scores)
     
     #def saveData(self, athletes, scores):
