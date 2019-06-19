@@ -68,13 +68,17 @@ class gamesURL:
         request = getJSON(self.url)
         leader_board_rows = request['leaderboardRows']
         athletes = []
-        scores = []
+        leaderboard_scores = []
         for row in leader_board_rows:
             athlete = row['entrant']
             athletes.append(athlete)
-            score = row['scores']
-            scores.append(score)
-        return(athletes, scores)
+            
+            scores = row['scores']
+            for score in scores:
+                # Need the competitorId to tie scores back to athletes
+                score["competitorId"] = athlete["competitorId"]
+                leaderboard_scores.append(score)
+        return(athletes, leaderboard_scores)
     
     #def saveData(self, athletes, scores):
         

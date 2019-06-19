@@ -24,7 +24,7 @@ class leaderboardDatabase:
         conn = sqlite3.connect(self.directory)
         conn.execute('''CREATE TABLE leaderboardScores (ordinal INTEGER, rank INTEGER, score INTEGER, scoreDisplay TEXT,
         mobileScoreDisplay TEXT, scoreIdentifier TEXT, scaled INTEGER, video INTEGER, breakdown TEXT, time INTEGER, judge TEXT,
-        affiliate TEXT, heat TEXT, lane TEXT )''')
+        affiliate TEXT, heat TEXT, lane TEXT, competitorId INTEGER)''')
         conn.execute('''CREATE TABLE leaderboardAthletes (competitorId INTEGER, competitorName TEXT, firstName TEXT, lastName TEXT,
         status TEXT, postCompStatus TEXT, gender TEXT, profilePicS3key TEXT, countryOfOriginCode TEXT, countryOfOriginName TEXT,
         divisionId TEXT, affiliateId INTEGER, affiliateName TEXT, age INTEGER, height TEXT, weight TEXT)''')
@@ -33,10 +33,18 @@ class leaderboardDatabase:
     """
     INSERT THE DATA INTO THE DATABASE
     """
-    def insertRows(self):
+    def insertRows(self, athletes, scores):
         conn = sqlite3.connect(self.directory)
-        # conn = append athletes
-        # conn = append scores
+        conn.executemany('''INSERT INTO leaderboardScores(ordinal, rank , score , scoreDisplay ,
+        mobileScoreDisplay , scoreIdentifier , scaled , video , breakdown , time , judge ,
+        affiliate , heat , lane )
+        VALUES(?,?,?,?,?,?,?,?,?)''', scores)
+        conn.commit()
+    
+        conn.executemany('''INSERT INTO leaderboardAthletes(tordinal, rank , score , scoreDisplay ,
+        mobileScoreDisplay , scoreIdentifier , scaled , video , breakdown , time , judge ,
+        affiliate , heat , lane )
+        VALUES(?,?,?,?,?,?,?,?,?)''', scores)
         conn.close()
     
     """
