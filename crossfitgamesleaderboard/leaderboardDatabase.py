@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import sqlite3
 import pandas as pd 
 
@@ -37,14 +38,14 @@ class leaderboardDatabase:
         conn = sqlite3.connect(self.directory)
         conn.executemany('''INSERT INTO leaderboardScores(ordinal, rank , score , scoreDisplay ,
         mobileScoreDisplay , scoreIdentifier , scaled , video , breakdown , time , judge ,
-        affiliate , heat , lane )
-        VALUES(?,?,?,?,?,?,?,?,?)''', scores)
+        affiliate , heat , lane, competitorId )
+        VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)''', scores)
         conn.commit()
     
-        conn.executemany('''INSERT INTO leaderboardAthletes(tordinal, rank , score , scoreDisplay ,
-        mobileScoreDisplay , scoreIdentifier , scaled , video , breakdown , time , judge ,
-        affiliate , heat , lane )
-        VALUES(?,?,?,?,?,?,?,?,?)''', scores)
+        conn.executemany('''INSERT INTO leaderboardAthletes(competitorId , competitorName , firstName , lastName ,
+        status , postCompStatus , gender , profilePicS3key , countryOfOriginCode , countryOfOriginName ,
+        divisionId , affiliateId , affiliateName , age , height , weight )
+        VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)''', scores)
         conn.close()
     
     """
@@ -57,6 +58,3 @@ class leaderboardDatabase:
         conn.execute('SELECT COUNT(*) from leaderboardAthletes')
         countAthletes = conn.fetchone()
         return(countAthletes, countScores)
-
-test = leaderboardDatabase('/Users/silv6928/', 'test')
-test.createDB()
