@@ -16,7 +16,7 @@ def main(file_path):
     print(men_scores)
     test.insertRows(men_athletes, men_scores)
 
-    #print(men_athletes)
+    print(test.checkStatus())
 
 if __name__ == "__main__":
     main('/Users/silv6928/')

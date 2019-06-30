@@ -23,12 +23,12 @@ class leaderboardDatabase:
     def createDB(self):
         print(self.directory)
         conn = sqlite3.connect(self.directory)
-        conn.execute('''CREATE TABLE leaderboardScores (ordinal INTEGER, rank INTEGER, score INTEGER, scoreDisplay TEXT,
-        mobileScoreDisplay TEXT, scoreIdentifier TEXT, scaled INTEGER, video INTEGER, breakdown TEXT, time INTEGER, judge TEXT,
-        affiliate TEXT, heat TEXT, lane TEXT, competitorId INTEGER)''')
-        conn.execute('''CREATE TABLE leaderboardAthletes (competitorId INTEGER, competitorName TEXT, firstName TEXT, lastName TEXT,
+        conn.execute('''CREATE TABLE leaderboardScores (ordinal INT, rank INT, score INT, scoreDisplay TEXT,
+        mobileScoreDisplay TEXT, scoreIdentifier TEXT, scaled INT, video INT, breakdown TEXT, time INT, judge TEXT,
+        affiliate TEXT, heat TEXT, lane TEXT, competitorId INT)''')
+        conn.execute('''CREATE TABLE leaderboardAthletes (competitorId INT, competitorName TEXT, firstName TEXT, lastName TEXT,
         status TEXT, postCompStatus TEXT, gender TEXT, profilePicS3key TEXT, countryOfOriginCode TEXT, countryOfOriginName TEXT,
-        divisionId TEXT, affiliateId INTEGER, affiliateName TEXT, age INTEGER, height TEXT, weight TEXT)''')
+        divisionId TEXT, affiliateId INT, affiliateName TEXT, age INT, height TEXT, weight TEXT)''')
         conn.close()
 
     """

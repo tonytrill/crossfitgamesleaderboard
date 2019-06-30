@@ -85,6 +85,75 @@ class gamesURL:
                 # Need the competitorId to tie scores back to athletes
                 score["competitorId"] = str(athlete["competitorId"])
                 score["ordinal"] = str(score["ordinal"])
+                if 'ordinal' not in score:
+                    score['ordinal'] = ''
+                else:
+                    score['ordinal'] = score['ordinal']
+                    
+                if 'rank' not in score:
+                    score['rank'] = ''
+                else:
+                    score['rank'] = score['rank']
+
+                if 'score' not in score:
+                    score['score'] = ''
+                else:
+                    score['score'] = score['score']
+
+                if 'scoreDisplay' not in score:
+                    score['scoreDisplay'] = ''
+                else:
+                    score['scoreDisplay'] = score['scoreDisplay']
+
+                if 'mobileScoreDisplay' not in score:
+                    score['mobileScoreDisplay'] = ''
+                else:
+                    score['mobileScoreDisplay'] = score['mobileScoreDisplay']
+
+                if 'scoreIdentifier' not in score:
+                    score['scoreIdentifier'] = ''
+                else:
+                    score['scoreIdentifier'] = score['scoreIdentifier']
+
+                if 'scaled' not in score:
+                    score['scaled'] = ''
+                else:
+                    score['scaled'] = score['scaled']
+
+                if 'video' not in score:
+                    score['video'] = ''
+                else:
+                    score['video'] = score['video']
+
+                if 'breakdown' not in score:
+                    score['breakdown'] = ''
+                else:
+                    score['breakdown'] = score['breakdown']
+
+                if 'time' not in score:
+                    score['time'] = ''
+                else:
+                    score['time'] = score['time']
+
+                if 'judge' not in score:
+                    score['judge'] = ''
+                else:
+                    score['judge'] = score['judge']
+
+                if 'affiliate' not in score:
+                    score['affiliate'] = ''
+                else:
+                    score['affiliate'] = score['affiliate']
+
+                if 'heat' not in score:
+                    score['heat'] = ''
+                else:
+                    score['heat'] = score['heat']
+
+                if 'lane' not in score:
+                    score['lane'] = ''
+                else:
+                    score['lane'] = score['lane']
                 leaderboard_scores.append(score)
         del(row, score, athlete)
         leaderboard_scores = convertDict(leaderboard_scores)
