@@ -1,10 +1,10 @@
 #IDE removal
-.vscode
+/.vscode
 
-.idea
+/.idea
 
 
-__pycache___
+/__pycache___
 
 #remove virtual env
 /venv
