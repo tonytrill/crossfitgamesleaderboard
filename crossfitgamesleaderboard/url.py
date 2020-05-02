@@ -79,89 +79,31 @@ class gamesURL:
         for row in leader_board_rows:
             athlete = row['entrant']
             athletes.append(athlete)
-            
             scores = row['scores']
             for score in scores:
                 # Need the competitorId to tie scores back to athletes
                 score["competitorId"] = str(athlete["competitorId"])
                 score["ordinal"] = str(score["ordinal"])
-                if 'ordinal' not in score:
-                    score['ordinal'] = ''
-                else:
-                    score['ordinal'] = score['ordinal']
-                    
-                if 'rank' not in score:
-                    score['rank'] = ''
-                else:
-                    score['rank'] = score['rank']
-
-                if 'score' not in score:
-                    score['score'] = ''
-                else:
-                    score['score'] = score['score']
-
-                if 'scoreDisplay' not in score:
-                    score['scoreDisplay'] = ''
-                else:
-                    score['scoreDisplay'] = score['scoreDisplay']
-
-                if 'mobileScoreDisplay' not in score:
-                    score['mobileScoreDisplay'] = ''
-                else:
-                    score['mobileScoreDisplay'] = score['mobileScoreDisplay']
-
-                if 'scoreIdentifier' not in score:
-                    score['scoreIdentifier'] = ''
-                else:
-                    score['scoreIdentifier'] = score['scoreIdentifier']
-
-                if 'scaled' not in score:
-                    score['scaled'] = ''
-                else:
-                    score['scaled'] = score['scaled']
-
-                if 'video' not in score:
-                    score['video'] = ''
-                else:
-                    score['video'] = score['video']
-
-                if 'breakdown' not in score:
-                    score['breakdown'] = ''
-                else:
-                    score['breakdown'] = score['breakdown']
-
-                if 'time' not in score:
-                    score['time'] = ''
-                else:
-                    score['time'] = score['time']
-
-                if 'judge' not in score:
-                    score['judge'] = ''
-                else:
-                    score['judge'] = score['judge']
-
-                if 'affiliate' not in score:
-                    score['affiliate'] = ''
-                else:
-                    score['affiliate'] = score['affiliate']
-
-                if 'heat' not in score:
-                    score['heat'] = ''
-                else:
-                    score['heat'] = score['heat']
-
-                if 'lane' not in score:
-                    score['lane'] = ''
-                else:
-                    score['lane'] = score['lane']
+                score['ordinal'] = '' if 'ordinal' not in score else score['ordinal']
+                score['rank'] = '' if 'rank' not in score else score['rank']
+                score['score'] = '' if 'score' not in score else score['score']
+                score['scoreDisplay'] = '' if 'scoreDisplay' not in score else score['scoreDisplay'] 
+                score['mobileScoreDisplay'] = '' if 'mobileScoreDisplay' not in score else score['mobileScoreDisplay']
+                score['scoreIdentifier'] = '' if 'scoreIdentifier' not in score else score['scoreIdentifier']
+                score['scaled'] = '' if 'scaled' not in score else score['scaled']
+                score['video'] = '' if 'video' not in score else score['video']
+                score['breakdown'] = '' if 'breakdown' not in score else score['breakdown']
+                score['time'] = '' if 'time' not in score else score['time']
+                score['judge'] = '' if 'judge' not in score else score['judge']
+                score['affiliate'] = '' if 'affiliate' not in score else score['affiliate']
+                score['heat'] = '' if 'heat' not in score else score['heat']
+                score['lane'] = '' if 'lane' not in score else score['lane']
+                
                 leaderboard_scores.append(score)
         del(row, score, athlete)
         leaderboard_scores = convertDict(leaderboard_scores)
         athletes = convertDict(athletes)
         return(athletes, leaderboard_scores)
-    
-    #def saveData(self, athletes, scores):
-        
 
     """
     LOOP THROUGH ALL OF THE PAGES FOR THE URL GIVEN ON THE LEADERBOARD AND PUT THE CONTENTS INTO A MASTER LIST

@@ -1,0 +1,7 @@
+#IDE removal
+.vscode
+
+.idea
+
+
+__pycache___

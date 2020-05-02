@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import sqlite3
-import pandas as pd 
+import pandas as pd
+import os 
 
 """
 CREATE THE LEADERBOARD DATABASE
@@ -10,18 +11,16 @@ Stores it in the default directory
 
 class leaderboardDatabase:
 
-    def __init__(self, filePath, databaseName):
+    def __init__(self):
         # Create folder to save DB
-        if filePath is None:
-            raise Exception("No File Path Specified")
-        else:
-            self.directory = str(filePath) + str(databaseName) + '.db'
+        self.directory = "./data/database/crossfitgamesleaderboard.db"
 
     """
     CREATE THE DATABASE AND THE TABLES AND SCHEMA STRUCTURE.
     """
     def createDB(self):
         print(self.directory)
+        if os.path.exists(self.directory): os.remove(self.directory)
         conn = sqlite3.connect(self.directory)
         conn.execute('''CREATE TABLE leaderboardScores (ordinal INT, rank INT, score INT, scoreDisplay TEXT,
         mobileScoreDisplay TEXT, scoreIdentifier TEXT, scaled INT, video INT, breakdown TEXT, time INT, judge TEXT,
