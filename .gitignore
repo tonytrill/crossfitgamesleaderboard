@@ -1,10 +1,13 @@
 #IDE removal
-/.vscode
+.vscode/
+.idea/
 
-/.idea
-
-
-/__pycache___
+# random python stuff
+__pycache___/
+.ipynb_checkpoints
 
 #remove virtual env
-/venv
+venv/
+
+data/database/*
+
